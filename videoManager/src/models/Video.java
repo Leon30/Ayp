@@ -20,4 +20,12 @@ public class Video{
 	public Category getCategory(){
 		return category;
 	}
+
+	public int getViews(){
+		return views;
+	}
+
+	public void upView(){
+		views++;
+	}
 }
