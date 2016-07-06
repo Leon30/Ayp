@@ -29,24 +29,24 @@ public class VideoManager{
 
 	public void printMostWiewed(){
 		int pastViews = 0;
-		int noNullVideos = 0;
+		int mostViewedVideo = 0;
 		for (int i = 0; i < videos.length; i++) {
 			if(videos[i] != null){
 				if (i =! 0) {
-					
-				}
-				if (videos[i].views > noNullVideos) {
-					
-				}
-				noNullVideos++;
+					if (videos[i].views > noNullVideos) {
+						pastViews = videos[i].views;
+						mostViewedVideo = videos[i].views;
+					}
+				}	
 			}
 		}
+		printVideo(mostViewedVideo);
 	}
 
 	public static void main(String[] args) {
-		VideoManager vm = new VideoManager();
-		vm.addVideo(0, new Video("review",Category.TECH));
-		vm.addVideo(1, new Video("song",Category.MUSIC));
-		vm.printVideos();
+		VideoManager youtube = new VideoManager();
+		youtube.addVideo(0, new Video("review",Category.TECH));
+		youtube.addVideo(1, new Video("song",Category.MUSIC));
+		youtube.printVideos();
 	}
 }
