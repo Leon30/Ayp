@@ -4,7 +4,7 @@ public class Video{
 
 	private String title;
 	private Category category;
-	private String gain;
+	private double gainPerView;
 	private int views;
 
 	public Video(String title,Category category){
@@ -25,7 +25,11 @@ public class Video{
 		return views;
 	}
 
-	public void upView(){
+	public double getGainPerView(){
+		return gainPerView;
+	}
+
+	public void upViews(){
 		views++;
 	}
 }

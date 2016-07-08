@@ -1,5 +1,5 @@
 package models;
 
 public enum Category{
-	MUSIC, GAMES, TECH
+	MUSIC, GAMES, TECH, TUTORIAL, SPORTS
 }

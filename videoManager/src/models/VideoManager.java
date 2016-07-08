@@ -9,7 +9,14 @@ public class VideoManager{
 		videos = new Video[MAX_VIDEOS];
 	}
 
-	public void addVideo(int pos, Video video){
+	public void addVideo(Video video){
+		int pos;
+		for (int i = 0; i < (videos.length + 1); i++) {
+			if ((videos[i] == null) || i = videos.length) {
+				pos = i;
+				break;
+			}
+		}
 		videos[pos] = video;
 	}
 
@@ -18,7 +25,7 @@ public class VideoManager{
 	}
 
 	public void printVideo(int pos){
-		System.out.println("Title: " + videos[pos].getTitle() + " Category: " + videos[pos].getCategory());
+		System.out.println("Title: " + videos[pos].getTitle() + " Category: " + videos[pos].getCategory() + " Views: " + videos[pos].getViews());
 	}
 
 	public void printVideos(){
@@ -47,12 +54,25 @@ public class VideoManager{
 		printVideo(mostViewedVideo);
 	}
 
+	public double getTotalGain(){
+		double totalGain = 0;
+		for (int i = 0; i < videos.length; i++) {
+			totalGain += videos[i].getViews() * videos[i].getGainPerView();
+		}
+		return totalGain;
+	}
+
+	public void seeVideo(int videoNumber){
+		videos[videoNumber].upViews();
+	}
+
 	public static void main(String[] args) {
 		VideoManager youtube = new VideoManager();
-		youtube.addVideo(0, new Video("review",Category.TECH));
-		youtube.addVideo(1, new Video("song",Category.MUSIC));
+		youtube.addVideo(new Video("review",Category.TECH));
+		youtube.addVideo(new Video("song",Category.MUSIC));
 		System.out.print("Most Viewed: ");
 		youtube.printMostWiewed();
 		youtube.printVideos();
+		youtube.seeVideo(0);
 	}
 }
