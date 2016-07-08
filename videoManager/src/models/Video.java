@@ -2,14 +2,15 @@ package models;
 
 public class Video{
 
-	private String title;
-	private Category category;
-	private double gainPerView;
+	private final String title;
+	private final Category category;
+	private final double gainPerView;
 	private int views;
 
-	public Video(String title,Category category){
+	public Video(String title, Category category, double gainPerView){
 		this.title = title;
 		this.category = category;
+		this.gainPerView = gainPerView;
 		views = 0;
 	}
 
