@@ -30,9 +30,9 @@ public class PokemonGo{
 				return ;
 			}
 		}
-		for (Player p: players) {
-			if (p == null) {
-				p = player;
+		for (int i = 0; i < players.length; i++) {
+			if (players[i] == null) {
+				players[i] = player;
 				System.out.println("Jugador anadido.");
 				return ;
 			}
