@@ -60,9 +60,9 @@ public class PokemonGo{
 
 	public void printPlayers(){
 		for (Player p: players) {
-			//if (p != null) {
+			if (p != null) {
 				System.out.println(p);
-			//}
+			}
 		}
 	}
 
