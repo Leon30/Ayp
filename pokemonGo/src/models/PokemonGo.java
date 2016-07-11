@@ -8,9 +8,9 @@ public class PokemonGo{
 	static public final int MAX_PLACES = 5;
 	static public final int MAX_MAP_HEIGHT = 100;
 	static public final int MAX_CAPTURE_DIST = 5;
-	private Scanner scanner;
-	private Player[] players;
-	private Place[] places;
+	private final Scanner scanner;
+	private final Player[] players;
+	private final Place[] places;
 
 	public PokemonGo(){
 		players = new Player[MAX_PLAYERS];
@@ -25,7 +25,7 @@ public class PokemonGo{
 
 	public void addPlayer(Player player){
 		for (Player p: players) {
-			if (p != null && p.getName() == player.getName()) {
+			if (p != null && p.getName().equals(player.getName())) {
 				System.out.println("El jugador ya existe.");
 				return ;
 			}
@@ -46,7 +46,7 @@ public class PokemonGo{
 		scanner.nextLine();
 		String name = scanner.nextLine();
 		for (Player p: players) {
-			if (p != null && p.getName() == name) {
+			if (p != null && p.getName().equals(name)) {
 				return p;
 			}
 		}
@@ -59,6 +59,7 @@ public class PokemonGo{
 	}
 
 	public void printPlayers(){
+            System.out.println("Jugadores añadidos");
 		for (Player p: players) {
 			if (p != null) {
 				System.out.println(p);
@@ -135,6 +136,7 @@ public class PokemonGo{
 				switch (op) {
 					case 1:
 						capturePokemon(place,player);
+                                                play(player);
 					break;
 					case 2:
 						fight(place,player);
@@ -154,6 +156,7 @@ public class PokemonGo{
 			play(player);
 		}else {
 			System.out.println("Hay un pokemon. Capturarlo(Y)");
+                        scanner.nextLine();
 			if (scanner.nextLine().charAt(0) == 'Y') {
 				capturePokemon(place,player);
 			}else {
@@ -167,8 +170,15 @@ public class PokemonGo{
 			System.out.println("Se encuentra en " + player.getPos()[0] + ", " + player.getPos()[1]);
 			System.out.println("Escriba las condenadas a las que quiere ir:");
 			if (player.setPos(scanner.nextInt(), scanner.nextInt())) {
-				interactWithPlace(player, checkPlace(player));
-			}
+                                if (checkPlace(player) != null) {
+                                    interactWithPlace(player, checkPlace(player));
+                                }else{
+                                    System.out.println("No hay lugares cerca...");
+                                    play(player);
+                                }
+			}else{
+                            play(player);
+                        }
 		}
 	}
 
