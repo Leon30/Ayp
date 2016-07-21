@@ -23,8 +23,18 @@ public class SoccerForecaster {
         }
     }
 
-    public double[] calculateVictory(Match m){
-    	return new double[0];
+    public Team calculateVictory(Match m){
+    	if(m.getTeams[0].calculateTotalAverage() > m.getTeams[0].calculateTotalAverage()){
+    	    return m.getTeams()[0];
+    	}else if((m.getTeams[0].calculateTotalAverage() < m.getTeams[0].calculateTotalAverage()){
+    	    return m.getTeams()[1];
+    	}else{
+    	    if(m.getTeams[0].getWiningMatches() > m.getTeams[0].getWiningMatches()){
+    	        return m.getTeams()[0];
+    	    }else{
+    	        return m.getTeams()[1];
+    	    }
+    	}
     }
 
     public static void main(String[] args) {
