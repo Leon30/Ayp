@@ -14,4 +14,12 @@ public class Match {
     public Team[] getTeams(){
     	return teams;
     }
+    
+    public Tournament getTournament(){
+        
+    }
+    
+    public Round getRound(){
+        
+    }
 }
