@@ -16,10 +16,10 @@ public class Match {
     }
     
     public Tournament getTournament(){
-        
+        return tournament;
     }
     
     public Round getRound(){
-        
+        return round;
     }
 }
