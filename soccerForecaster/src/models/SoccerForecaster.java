@@ -1,11 +1,11 @@
 package models;
 
-import java.util.Scanner;
+import views.IoManager;
 
 public class SoccerForecaster {
 
-    public static final int MAX_TEAMS = 20;
     public static final int MAX_MATCHS = 20;
+    public static final int MAX_TEAMS = 20;
     private Match[] matchList;
     private Team[] teamList;
 
@@ -13,6 +13,20 @@ public class SoccerForecaster {
         matchList = new Match[MAX_MATCHS];
         teamList = new Team[MAX_TEAMS];
         initTeams();
+    }
+    
+    public int getWinner(Match m){
+        return m.calculateVictory();
+    }
+
+    public Team[] getTeamList() {
+        return teamList;
+    }
+    
+    public void initTeams(){
+        for (int i = 0; i < Team.INIT_TEAMS_LIST.length; i++) {
+            teamList[i] = Team.INIT_TEAMS_LIST[i];
+        }
     }
     
     public void registerMatch(Match m){
@@ -27,30 +41,12 @@ public class SoccerForecaster {
         for (int i = 0; i < teamList.length; i++) {
             if (teamList[i] == null) {
                 teamList[i]= t;
+                return ;
             }
         }
     }
-
-    public Team calculateVictory(Match m){
-    	if(m.getTeams[0].calculateTotalAverage() > m.getTeams[0].calculateTotalAverage()){
-    	    return m.getTeams()[0];
-    	}else if((m.getTeams[0].calculateTotalAverage() < m.getTeams[0].calculateTotalAverage()){
-    	    return m.getTeams()[1];
-    	}else{
-    	    if(m.getTeams[0].getWiningMatches() > m.getTeams[0].getWiningMatches()){
-    	        return m.getTeams()[0];
-    	    }else{
-    	        return m.getTeams()[1];
-    	    }
-    	}
-    }
     
-    public void getProbalility(){
-        
+    public Match getMatch(int i){
+        return matchList[i];
     }
-
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
 }
